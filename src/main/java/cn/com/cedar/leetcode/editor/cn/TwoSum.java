@@ -47,6 +47,9 @@
 
 package cn.com.cedar.leetcode.editor.cn;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TwoSum {
     public static void main(String[] args) {
         Solution solution = new TwoSum().new Solution();
@@ -55,7 +58,22 @@ public class TwoSum {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int[] twoSum(int[] nums, int target) {
+            if (nums == null || nums.length == 1) {
+                return new int[]{-1, -1};
+            }
 
+            // current --> index
+            Map<Integer, Integer> curIndexMap = new HashMap<>();
+
+            for (int i = 0; i < nums.length; i++) {
+                int another = target - nums[i];
+                if (curIndexMap.containsKey(another)) {
+                    return new int[]{curIndexMap.get(another), i};
+                } else {
+                    curIndexMap.put(nums[i], i);
+                }
+            }
+            return new int[]{-1, -1};
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
