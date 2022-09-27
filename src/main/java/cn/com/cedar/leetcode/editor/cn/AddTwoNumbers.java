@@ -63,7 +63,7 @@ public class AddTwoNumbers {
     class Solution {
 
         // 用来取模
-        private static final int ten_number = 10;
+        private static final int TEN_NUMBER = 10;
 
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
@@ -83,18 +83,18 @@ public class AddTwoNumbers {
                 int sum = pVal + qVal + carry;
 
                 // 进位
-                carry = sum / ten_number;
+                carry = sum / TEN_NUMBER;
                 // 余数
-                int mode = sum % ten_number;
+                int mod = sum % TEN_NUMBER;
 
-                prev.next = new ListNode(mode);
+                prev.next = new ListNode(mod);
                 prev = prev.next;
 
                 // 递推
-                if (p!=null) {
+                if (p != null) {
                     p = p.next;
                 }
-                if (q!=null) {
+                if (q != null) {
                     q = q.next;
                 }
             }
