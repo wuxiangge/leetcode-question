@@ -1,0 +1,29 @@
+    class Solution {
+        public int lengthOfLongestSubstring(String s) {
+            if (s == null || s.length() == 0) {
+                return 0;
+            }
+
+            // 滑动窗口 char --> index
+            Map<Character, Integer> charIndexMap = new HashMap<>(s.length());
+            int left = -1;
+            // 最大的结果
+            int max = 0;
+
+            for (int i = 0; i < s.length(); i++) {
+                if (charIndexMap.containsKey(s.charAt(i))) {
+                    left = Math.max(left, charIndexMap.get(s.charAt(i)));
+                } else {
+                    charIndexMap.put(s.charAt(i), i);
+                    max = Math.max(max, i - left);
+                }
+            }
+            return max;
+        }
+    }
+
+//total_testcases:987
+//total_correct:262
+//input_formatted:"tmmzuxt"
+//expected_output:5
+//code_output:4

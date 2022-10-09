@@ -47,13 +47,21 @@
 
 package cn.com.cedar.leetcode.editor.cn;
 
+import sun.misc.Unsafe;
+
+import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TwoSum {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Solution solution = new TwoSum().new Solution();
+
+        Field unsafeField = Unsafe.class.getDeclaredField("theUnsafe");
+        //Field unsafeField = Unsafe.class.getDeclaredFields()[0]; //也可以这样，作用相同
+        unsafeField.setAccessible(true);
+        Unsafe unsafe =(Unsafe) unsafeField.get(null);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
